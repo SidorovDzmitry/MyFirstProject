@@ -1,4 +1,430 @@
+/*Вопросы и пояcнения:
+
+В макете ширина 1920px, а у меня ширина экрана 1366px. Т.к. горизонтальный скролл сильно напрягает, то стараюcь его убрать с макимально возможным соблюдением пропорций
+
+Изначально делел все по размереам макета, потом подправил, чтобы не было горизонтального скролла (размеры старался использовать пропорцианално или чтобы на экране отоброжалось симатично), однако в какой-то момент горизонтальный скролл появился (я упустил этот момент и потом причину не нашел). (Возвращать все к точным размерам макета уже не стал. Откорректирую в следующих дз)
+
+2. Здесь я  пробовал подключить нужный шрифт (шрифты скачены и в папку fonts скинуты, но Franklin Gothick либо не подключился либо отображается не корректно (без sans-serif шрифт отображается с засечкамию) 
+@font-face {
+	font-family: 'Franklin Gothic', sans-serif; 
+	font-style: normal;
+	font-weight: normal;
+	src: local('Franklin Gothic'), 
+	url('..//fonts/FRANKGO.woff') format('woff'),
+	url('../fonts/FRANKGO.ttf') format('truetype');
+	}
+Подскажи где ошбка и почему шрифт подключился неккоректно?
+
+3. При оформлении ссылок в нафигации .header путем обращения к .header а {} или напрямую классу .menu-link (пробовал и другие варианты) не все ссылки изменяли цвет (1-ая и последняя ссылка оставались черными). 
+	/*В файле reset.css для тега <a> было устанвлен color: black.
+Удалил в reset.css для a, a:visited {color: black;} и при обращении к a {} и уже все ссылки цвет меняли. 
+Почему не ко всем ссылкам применялись стили?
+
+4. В .main	указывал height: calc(100%-60px) и оно не срабатывало(устанавливет высоту либо по контенту либо 60px (как у header)(скорее всего устанавливало высоту headera)
+height: 100% работает, но появляется вертикальная прокрутка 
+Я подозреваю, что оно наслдовало св-ва высоты header, но так, вроде быть, не должно
+Почему height: calc(100%-60px) отображалось неправильно и где ошибка?
+
+5. Если ставлю в.main при стилизации background center/cover то фон смещается (как=будто отсчет не от границы блока .main, а от левого верхнего угла экрана (или <body>)
+Это ведь не совсем правильно и где-тоошибка? Если да, то подскажи где?
+
+6. Подкорректировал html, чтобы <main> был только для главной (1-ой) страницы. В предыдущей версии использовал main для всего основного контента (получается три тега <header> <main> и <footer>, а уже в каждый из них, в том числе в <main>, добавлял секции
+Как правильнее? 
+
+7. Столкнулся со следующим: 2 блочных элемента (не вложенных (section или div) и при верстке получается наложение по высоте один на другой (В vk пришлю screen).
+Я не совсем понимаю почему так, ведь элементы блочные и не вложенные и в моем представленни они должны быть столбиком один за одним (без наложения). Возможно, это будет объяснено в позиционировани. Пока непонятно почему так. Можешь пояснить этот момент?
+*/
+
 body {
-    background-color: rebeccapurple;
-    text-align: center;
+  /*font-family: 'Franklin Gothic', sans-serif; - отображается не корректно, поэтому буду использовать arial*/
+  font-family: Arial, Helvetica, sans-serif;
+}
+/*------------------------------------------header---------------------------------------------*/
+.header {
+  width: 100%;
+  max-width: 1920px;
+  height: 60px;
+  background-color: rgb(40, 62, 80);
+}
+
+.logo {
+  color: #fff;
+  line-height: 60px;
+  font-size: 1.58vw;
+  padding-left: 17%;
+  text-shadow: -1px 0px 0px rgb(1, 3, 26);
+}
+
+.menu {
+  float: right;
+  padding-right: 17%;
+}
+
+.menu__item {
+  display: inline;
+  padding-right: 2vw;
+}
+
+.menu__link {
+  color: white;
+  line-height: 60px;
+  font-size: 1.2vw;
+  text-transform: uppercase;
+}
+/*------------------------------------------main---------------------------------------------*/
+.main {
+  height: 95%; /*height: calc(100%-60px) не работает, указал приблизительно*/
+  background: url("../img/boy.png") 90% 100% / auto 85% no-repeat,
+    url("../img/background.jpg") padding-box no-repeat;
+}
+
+.main__conteiner {
+  float: left;
+  padding: 350px 0px 0px 350px;
+  text-align: center;
+}
+.main__title-1 {
+  font-size: 4.5vw; /*приблизительно *58 px*/
+  letter-spacing: -5px;
+  font-weight: bold;
+  color: #2c384a;
+}
+.main__title-2 {
+  font-size: 2vw;
+  letter-spacing: -1px;
+  color: #79818d;
+  margin-top: 15px;
+}
+
+.main__link {
+  display: inline-block;
+  line-height: 40px;
+  font-size: 19px;
+  letter-spacing: -1px;
+  color: #6d7682;
+  margin: 20px 0px 0px 0px;
+  padding: 0px 30px;
+  border: #6d7682 solid 2px;
+  border-radius: 7px;
+}
+/*----------------------------------------Обо мне-------------------------------------------*/
+.resume {
+  width: 100%;
+  height: 60%;
+  background-color: #fff;
+  text-align: center;
+}
+
+.resume__title,
+.skills__title,
+.cases__title,
+.statistics__tltle,
+.reviews__title {
+  display: block;
+  text-align: center;
+  margin: 30px 0px 25px 0px;
+  padding-top: 15px;
+  font-size: 32px;
+  color: #263244;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.resume__title::after,
+.skills__title::after,
+.cases__title::after,
+.statistics__tltle::after,
+.reviews__title::after,
+.contacts__title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  margin: 15px 0px;
+  left: 47%;
+  width: 100px;
+  height: 7px;
+  background: rgb(235, 119, 0);
+}
+
+.resume__text {
+  width: 50%;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: -1px;
+  line-height: 16px;
+  color: #3f495a;
+  font-family: "Calibri";
+  margin: 10px auto 10px auto;
+}
+.resume__download {
+  display: inline-block;
+  background: url(../img/dowload.png) 2% no-repeat;
+  padding: 5px 10px 5px 20px;
+  font-size: 20px;
+  letter-spacing: -1px;
+  color: #6f707e;
+  border: #6f707e solid 1px;
+  border-radius: 5px;
+}
+/*-----------------------------------------Что умею---------------------------------------------*/
+.skills {
+  height: 40%;
+  width: 100%;
+  max-width: 1920px;
+  background: url(../img/background_2.jpg) 50% 50% no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.skills__item {
+  display: block;
+  float: left;
+  width: 25%;
+  margin-top: 45px;
+}
+.skills__title-2 {
+  padding: 10px;
+  font-size: 19px;
+  color: #cf7600;
+  font-weight: bold;
+  font-family: "Bahnschrift", sans-serif;
+}
+.skills__text {
+  font-size: 17px;
+  padding: 20px 60px;
+  color: #3f495a;
+  font-family: "Calibri", Verdana, Geneva, Tahoma, sans-serif;
+}
+/*------------------------------------------Кейсы--------------------------------------------*/
+.cases {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #3f495a;
+}
+.cases__text {
+  margin: 20px 0px 20px 0px;
+  padding: 15px 0px;
+  font-size: 17px;
+  font-family: "Calibri";
+}
+.cases__title-2 {
+  font-size: 25px;
+  padding: 10px 10px;
+}
+.info__text {
+  font-size: 17px;
+  padding: 10px 10px;
+}
+.info__link {
+  display: block;
+  width: 190px;
+  text-align: center;
+  padding: 5px 0px;
+  background-color: rgb(8, 133, 133);
+  color: #fff;
+  font-size: 18px;
+  line-height: 36px;
+  border-radius: 7px;
+}
+.cases__wrapp {
+  text-align: left;
+  padding: 20px 20px 0px 220px;
+  width: 100%;
+}
+.cases__info {
+  float: left;
+  width: 15%;
+}
+.project {
+  float: left;
+  width: 76%;
+  padding: 0px 100px 50px 0px;
+  text-align: left;
+}
+.project__title {
+  font-size: 25px;
+  padding: 10px 5px 10px 5px;
+}
+.project__text {
+  font-size: 21px;
+  padding: 0px 5px 100px 5px;
+  text-align: left;
+}
+/*------------------------------------Расчет стоимости------------------------------------------*/
+.calc {
+  height: 60%;
+  width: 100%;
+  color: #1c2534;
+}
+.calc__title {
+  padding: 50px 10px 25px 10px;
+  font-size: 46px;
+  text-align: center;
+}
+.calc__wrapper {
+  width: 100%;
+  padding: 10px 450px 10px 450px;
+  text-align: left;
+  font-family: "Franklin Gothic";
+}
+.calc__title-2 {
+  font-size: 29px;
+  font-weight: 500;
+}
+.calc__item {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(239, 238, 238, 0.3);
+  font-size: 17px;
+  font-weight: 600;
+  color: #737373;
+}
+.result__title {
+  font-size: 21px;
+  color: #1c2534;
+  font-weight: 600;
+}
+/*----------------------------------Немного статистики -----------------------------------------*/
+.statistics {
+  width: 100%;
+  height: 55%;
+  margin-top: 350px;
+  padding-top: 40px;
+  background: url(../img/background_3.jpg) no-repeat;
+  background-size: cover;
+  color: #323e4f;
+  font-family: "Franklin Gothic";
+  text-align: center;
+}
+
+.statistics__wrapper {
+  width: 100%;
+  padding: 0px 200px;
+}
+.statistics__item {
+  float: left;
+  padding: 40px 10px;
+  width: 25%;
+  color: #323e4f;
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.statistics__text {
+  padding-top: 20px;
+  font-size: 21px;
+  font-weight: 300;
+}
+.statistics__text-bold {
+  padding-top: 30px;
+  font-size: 37px;
+  font-weight: 700;
+}
+.reviews {
+  width: 100%;
+  height: 55%;
+  margin: 50px 0px;
+  background-color: #fff;
+  text-align: center;
+}
+.reviews__photo {
+  padding: 25px 0px;
+  text-align: center;
+}
+.reviews__text,
+.reviews__text-2 {
+  padding: 20px 200px;
+  font-size: 17px;
+  color: #243042;
+  font-family: "Calibri";
+}
+.reviews__text-bold {
+  font-weight: 700;
+}
+.reviews__text-2::after {
+  content: "";
+  display: block;
+  padding-top: 60px;
+  left: 37%;
+  background: url(../img/circle.png) 48% 50% no-repeat,
+    url(../img/circle_2.png) 52% 50% no-repeat,
+    url(../img/circle_2.png) 50% 50% no-repeat;
+}
+.contacts {
+  width: 100%;
+  height: 808px;
+  background: url(../img/geo.png) 35% 27% no-repeat,
+    url(../img/mail.png) 51% 27% no-repeat,
+    url(../img/tell.png) 67% 27% no-repeat,
+    url(../img/background_4.jpg) 50% 50% no-repeat;
+  font-family: "Franklin Gothic";
+  text-align: center;
+}
+.contacts__title {
+  padding: 50px 0px;
+  font-size: 34px;
+  font-weight: 500;
+  color: #fff;
+}
+.contacts__text,
+.contacts__link {
+  font-size: 17px;
+  font-family: "Calibri";
+  text-align: center;
+  color: #fff;
+}
+
+.contacts__item {
+  display: inline-block;
+  padding: 90px 55px;
+}
+
+.feedback__title {
+  font-size: 21px;
+  font-weight: 500;
+  font-family: "Franklin Gothic";
+  color: #fff;
+}
+.feedback {
+  margin: 50px 302px;
+}
+.contacts__input {
+  width: 47%;
+  height: 50px;
+  margin: 0px 10px 20px 10px;
+  padding: 0px 10px;
+  font-size: 21px;
+  font-family: "Franklin Gothic";
+}
+.contacts__area {
+  display: block;
+  font-size: 21px;
+  margin: 0px 10px 10px 10px;
+  padding: 0px 15px;
+  height: 95px;
+  font-family: "Franklin Gothic";
+  width: 97%;
+}
+.feedback button {
+  width: 120px;
+  line-height: 45px;
+  font-size: 21px;
+  font-family: "Franklin Gothic";
+  text-align: center;
+  background: none;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 6px;
+}
+.location {
+  width: 100%;
+  height: 355px;
+}
+.footer__bottom {
+  background-color: rgb(42, 62, 80);
+  width: 100%;
+  line-height: 85px;
+  font-size: 13px;
+  color: #ffffff;
+  font-family: "Arial";
+  text-align: center;
 }
