@@ -10,7 +10,7 @@
 	font-style: normal;
 	font-weight: normal;
 	src: local('Franklin Gothic'), 
-	url('..//fonts/FRANKGO.woff') format('woff'),
+	url('../fonts/FRANKGO.woff') format('woff'),
 	url('../fonts/FRANKGO.ttf') format('truetype');
 	}
 Подскажи где ошбка и почему шрифт подключился неккоректно?
@@ -73,7 +73,7 @@ body {
 }
 /*------------------------------------------main---------------------------------------------*/
 .main {
-  height: 95%; /*height: calc(100%-60px) не работает, указал приблизительно*/
+  height: calc(100% - 60px);
   background: url("../img/boy.png") 90% 100% / auto 85% no-repeat,
     url("../img/background.jpg") padding-box no-repeat;
 }
@@ -140,7 +140,7 @@ body {
   display: block;
   position: absolute;
   margin: 15px 0px;
-  left: 47%;
+  left: calc(50% - 50px);
   width: 100px;
   height: 7px;
   background: rgb(235, 119, 0);
@@ -288,7 +288,7 @@ body {
 .statistics {
   width: 100%;
   height: 55%;
-  margin-top: 350px;
+  margin-top: 0px;
   padding-top: 40px;
   background: url(../img/background_3.jpg) no-repeat;
   background-size: cover;
@@ -405,16 +405,30 @@ body {
   width: 97%;
 }
 .feedback button {
-  width: 120px;
-  line-height: 45px;
-  font-size: 21px;
-  font-family: "Franklin Gothic";
-  text-align: center;
   background: none;
-  color: #fff;
+  padding: 15px 30px;
+  color: white;
   border: 1px solid #fff;
-  border-radius: 6px;
-}
+  border-radius: 10px;
+  font-size: 17px;
+   }
+  .social__item a {
+    left: 35.8%;
+    bottom: 19px;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    float: left;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: -2px -2px 4px rgba(4, 233, 233, 0.7);
+    margin: 0px 15px 0px 14px;
+  } 
+  .social__item a:hover {
+  box-shadow: 2px 2px 5px rgba(95, 238, 12, 0.7);
+  }
+
 .location {
   width: 100%;
   height: 355px;
@@ -428,3 +442,4 @@ body {
   font-family: "Arial";
   text-align: center;
 }
+
