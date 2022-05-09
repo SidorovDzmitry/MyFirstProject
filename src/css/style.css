@@ -1,120 +1,218 @@
-/*Вопросы и пояcнения:
-
-В макете ширина 1920px, а у меня ширина экрана 1366px. Т.к. горизонтальный скролл сильно напрягает, то стараюcь его убрать с макимально возможным соблюдением пропорций
-
-Изначально делел все по размереам макета, потом подправил, чтобы не было горизонтального скролла (размеры старался использовать пропорцианално или чтобы на экране отоброжалось симатично), однако в какой-то момент горизонтальный скролл появился (я упустил этот момент и потом причину не нашел). (Возвращать все к точным размерам макета уже не стал. Откорректирую в следующих дз)
-
-2. Здесь я  пробовал подключить нужный шрифт (шрифты скачены и в папку fonts скинуты, но Franklin Gothick либо не подключился либо отображается не корректно (без sans-serif шрифт отображается с засечкамию) 
-@font-face {
-	font-family: 'Franklin Gothic', sans-serif; 
-	font-style: normal;
-	font-weight: normal;
-	src: local('Franklin Gothic'), 
-	url('../fonts/FRANKGO.woff') format('woff'),
-	url('../fonts/FRANKGO.ttf') format('truetype');
-	}
-Подскажи где ошбка и почему шрифт подключился неккоректно?
-
-3. При оформлении ссылок в нафигации .header путем обращения к .header а {} или напрямую классу .menu-link (пробовал и другие варианты) не все ссылки изменяли цвет (1-ая и последняя ссылка оставались черными). 
-	/*В файле reset.css для тега <a> было устанвлен color: black.
-Удалил в reset.css для a, a:visited {color: black;} и при обращении к a {} и уже все ссылки цвет меняли. 
-Почему не ко всем ссылкам применялись стили?
-
-4. В .main	указывал height: calc(100%-60px) и оно не срабатывало(устанавливет высоту либо по контенту либо 60px (как у header)(скорее всего устанавливало высоту headera)
-height: 100% работает, но появляется вертикальная прокрутка 
-Я подозреваю, что оно наслдовало св-ва высоты header, но так, вроде быть, не должно
-Почему height: calc(100%-60px) отображалось неправильно и где ошибка?
-
-5. Если ставлю в.main при стилизации background center/cover то фон смещается (как=будто отсчет не от границы блока .main, а от левого верхнего угла экрана (или <body>)
-Это ведь не совсем правильно и где-тоошибка? Если да, то подскажи где?
-
-6. Подкорректировал html, чтобы <main> был только для главной (1-ой) страницы. В предыдущей версии использовал main для всего основного контента (получается три тега <header> <main> и <footer>, а уже в каждый из них, в том числе в <main>, добавлял секции
-Как правильнее? 
-
-7. Столкнулся со следующим: 2 блочных элемента (не вложенных (section или div) и при верстке получается наложение по высоте один на другой (В vk пришлю screen).
-Я не совсем понимаю почему так, ведь элементы блочные и не вложенные и в моем представленни они должны быть столбиком один за одним (без наложения). Возможно, это будет объяснено в позиционировани. Пока непонятно почему так. Можешь пояснить этот момент?
-*/
+/* С прелоадером я не понимаю следуюее:
+1. Если задаю preloader height=100%, wight=100%, то контент логично смещается вниз, но пропадает header (меню)(его не видно)
+2 Если ставлю фиксрованое значение в px, например, h=100px, w=100px, то логично весь контент смещается вниз, но в этом случае header остается. Только из-за свойства position: fixed header зафиксирован почти по зентру экрана (сделаю скрин)
+3. Прелоадер ведь должен загружатьс до основного контента (пока контента не видно), а с контентом исчезать.
+Я понимю, что для осуществления такого нужен скрипт jc*/
 
 body {
-  /*font-family: 'Franklin Gothic', sans-serif; - отображается не корректно, поэтому буду использовать arial*/
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Franklin Gothic", sans-serif;
+  font-weight: 400;
 }
-/*------------------------------------------header---------------------------------------------*/
+
+/*---------------preloader---------------------*/
+/*.preloader {
+  position: relative;
+  display: grid;
+  width: 100px
+  height: 100px
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 2px;
+
+  margin: 30px auto;
+  z-index: 1000;
+}
+.preloader > div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #337ab7;
+  transform: scale(0);
+  transform-origin: center center;
+  animation: preloader 2s infinite linear;
+}
+.preloader > div:nth-of-type(1),
+.preloader > div:nth-of-type(5),
+.preloader > div:nth-of-type(9) {
+  animation-delay: 0.4s;
+}
+.preloader > div:nth-of-type(4),
+.preloader > div:nth-of-type(8) {
+  animation-delay: 0.2s;
+}
+.preloader > div:nth-of-type(2),
+.preloader > div:nth-of-type(6) {
+  animation-delay: 0.6s;
+}
+.preloader > div:nth-of-type(3) {
+  animation-delay: 0.8s;
+}
+@keyframes preloader {
+  0% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+} */ /*--------------------------------header-----------------------------*/
 .header {
   width: 100%;
   max-width: 1920px;
   height: 60px;
   background-color: rgb(40, 62, 80);
+  position: fixed;
+  z-index: 100; /*Добавил, чтобы скрывало контент, который ушел под header*/
 }
-
+.container {
+  max-width: 1170px;
+  margin: 0px auto;
+}
 .logo {
-  color: #fff;
+  display: inline-block;
   line-height: 60px;
-  font-size: 1.58vw;
-  padding-left: 17%;
+  font-size: 23px;
   text-shadow: -1px 0px 0px rgb(1, 3, 26);
+  color: #fff;
+  transition: all 0.3s;
+  transform: scale(1);
+  animation: logo__comming 2s ease;
 }
-
-.menu {
-  float: right;
-  padding-right: 17%;
+.menu__list {
+  display: inline-block;
+  margin-left: 20vw;
 }
-
 .menu__item {
-  display: inline;
-  padding-right: 2vw;
+  display: inline-block;
+  padding: 0 15px;
+  animation: menu__comming 0.5s ease forwards;
+  opacity: 0;
 }
-
+.menu__item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.menu__item:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.menu__item:nth-child(4) {
+  animation-delay: 1.2s;
+}
+.menu__item:nth-child(5) {
+  animation-delay: 1.6s;
+}
+.menu__item:nth-child(6) {
+  animation-delay: 2s;
+}
 .menu__link {
+  display: inline-block;
   color: white;
   line-height: 60px;
-  font-size: 1.2vw;
+  font-size: 17px;
   text-transform: uppercase;
+  transition: all 0.3s;
+  transform: scale(1);
 }
-/*------------------------------------------main---------------------------------------------*/
-.main {
-  height: calc(100% - 60px);
+.menu__link:hover,
+.logo:hover {
+  color: rgb(241, 150, 13);
+}
+.menu__link:active,
+.logo:active {
+  transform: scale(1.15);
+}
+@keyframes logo__comming {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes menu__comming {
+  0% {
+    margin-top: -80px;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+/*---------------------home-------------------------------------*/
+.home {
+  height: 615px; /*100% и калькуляция heigt:calc(100% - 60px) отобржают некорректно. (пришлю скриншот) Без <main> калькуляция и проценты работают */
   background: url("../img/boy.png") 90% 100% / auto 85% no-repeat,
-    url("../img/background.jpg") padding-box no-repeat;
+    url("../img/background.jpg") 0% 0% / cover no-repeat;
+  box-shadow: #cdcfd5 0px 5px 15px 5px;
 }
-
-.main__conteiner {
-  float: left;
-  padding: 350px 0px 0px 350px;
+.home__inner {
+  position: absolute;
+  margin-top: 40vh;
+  margin-left: 10vw;
   text-align: center;
+  padding: 0 10px;
+  opacity: 0;
+  animation: home__inner-move 1s ease forwards;
+  animation-delay: 2.4s;
 }
-.main__title-1 {
+.home__title {
   font-size: 4.5vw; /*приблизительно *58 px*/
-  letter-spacing: -5px;
-  font-weight: bold;
+  font-weight: 500px;
+  letter-spacing: -1px;
   color: #2c384a;
 }
-.main__title-2 {
+.home__subtitle {
+  padding: 30px 5px 40px 5px;
   font-size: 2vw;
   letter-spacing: -1px;
   color: #79818d;
-  margin-top: 15px;
 }
-
-.main__link {
+.home__link {
   display: inline-block;
+  position: relative;
+  margin: 10px 15px;
+  padding: 0 15px;
   line-height: 40px;
   font-size: 19px;
   letter-spacing: -1px;
   color: #6d7682;
-  margin: 20px 0px 0px 0px;
-  padding: 0px 30px;
   border: #6d7682 solid 2px;
   border-radius: 7px;
+  box-shadow: 0px 5px 0px rgba(40, 62, 80, 0.4);
+  transform: scale(1);
+  transition: all 0.2s;
+}
+.home__link:hover {
+  display: inline-block;
+  transform: scale(1.1);
+  background-color: rgb(40, 62, 80);
+  color: #fff;
+}
+.home__link:active {
+  box-shadow: 0px 1px 0px rgba(40, 62, 80, 0.4);
+  top: 4px;
+}
+@keyframes home__inner-move {
+  0% {
+    opacity: 0;
+    margin-left: -500px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 10vw;
+  }
 }
 /*----------------------------------------Обо мне-------------------------------------------*/
 .resume {
+  margin-top: 10px;
   width: 100%;
-  height: 60%;
   background-color: #fff;
   text-align: center;
 }
-
 .resume__title,
 .skills__title,
 .cases__title,
@@ -122,14 +220,12 @@ body {
 .reviews__title {
   display: block;
   text-align: center;
-  margin: 30px 0px 25px 0px;
-  padding-top: 15px;
+  padding: 60px 0px 50px;
   font-size: 32px;
   color: #263244;
   text-transform: uppercase;
   font-weight: 700;
 }
-
 .resume__title::after,
 .skills__title::after,
 .cases__title::after,
@@ -139,137 +235,218 @@ body {
   content: "";
   display: block;
   position: absolute;
-  margin: 15px 0px;
-  left: calc(50% - 50px);
-  width: 100px;
-  height: 7px;
+  margin-top: 24px;
+  left: calc(50% - 36px);
+  width: 72px;
+  height: 4px;
   background: rgb(235, 119, 0);
+}
+.resume__photo {
+  transition: all 0.5s;
+}
+.resume__photo:hover {
+  transform: scalex(-1);
 }
 
 .resume__text {
-  width: 50%;
+  width: 740px;
+  margin: 0 auto;
+  padding: 20px 10px;
   text-align: center;
-  font-size: 16px;
+  font-size: 17px;
   letter-spacing: -1px;
   line-height: 16px;
   color: #3f495a;
   font-family: "Calibri";
-  margin: 10px auto 10px auto;
 }
 .resume__download {
   display: inline-block;
-  background: url(../img/dowload.png) 2% no-repeat;
-  padding: 5px 10px 5px 20px;
+  margin: 35px 0 30px;
+  width: 200px;
+  height: 45px;
+  line-height: 45px;
   font-size: 20px;
   letter-spacing: -1px;
   color: #6f707e;
   border: #6f707e solid 1px;
   border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.resume__download::before,
+.resume__download::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  left: -100%;
+  opacity: 0.5;
+  text-align: center;
+  transition: all 0.3s;
+  /*z-index: -1;*/
+}
+.resume__download:hover {
+  color: white;
+}
+.resume__download::after {
+  opacity: 1;
+  transition-delay: 0s;
+}
+.resume__download:hover::before,
+.resume__download:hover:after {
+  left: 0;
+}
+.download__text {
+  display: inline-block;
+  position: relative;
+  padding: 0px 0px 0px 25px;
+  z-index: 3;
+}
+.download__text::before {
+  font-family: "icomoon";
+  content: "\f019";
+  position: absolute;
+  left: -5px;
+  transition: all 0.5s;
+  transition-delay: 0.2s;
+}
+.download__text:hover:before {
+  transform: translateY(6px);
 }
 /*-----------------------------------------Что умею---------------------------------------------*/
 .skills {
-  height: 40%;
   width: 100%;
-  max-width: 1920px;
-  background: url(../img/background_2.jpg) 50% 50% no-repeat;
-  background-size: cover;
-  text-align: center;
+  background: url(../img/background_2.jpg) 0% 0% / 100% no-repeat;
 }
 .skills__item {
-  display: block;
-  float: left;
-  width: 25%;
-  margin-top: 45px;
+  width: 24%;
+  padding: 15px 5px;
+  margin: 30px 0px 35px;
+  display: inline-block;
+  text-align: center;
 }
 .skills__title-2 {
-  padding: 10px;
+  padding: 10px 0 10px;
   font-size: 19px;
   color: #cf7600;
   font-weight: bold;
   font-family: "Bahnschrift", sans-serif;
 }
 .skills__text {
+  padding-bottom: 10px;
   font-size: 17px;
-  padding: 20px 60px;
   color: #3f495a;
   font-family: "Calibri", Verdana, Geneva, Tahoma, sans-serif;
 }
 /*------------------------------------------Кейсы--------------------------------------------*/
 .cases {
   width: 100%;
-  height: 100%;
   text-align: center;
   color: #3f495a;
 }
 .cases__text {
-  margin: 20px 0px 20px 0px;
-  padding: 15px 0px;
   font-size: 17px;
   font-family: "Calibri";
+  padding-bottom: 40px;
 }
-.cases__title-2 {
+
+.cases__inner {
+  margin: 30px 0px;
+  text-align: left;
+  float: left;
+}
+.info {
+  max-width: 220px;
+  margin-right: 80px;
+}
+.info__title {
   font-size: 25px;
-  padding: 10px 10px;
+  padding: 5px 0px;
 }
 .info__text {
+  font-family: "Calibri";
   font-size: 17px;
-  padding: 10px 10px;
+  line-height: 21px;
 }
 .info__link {
   display: block;
+  position: relative;
   width: 190px;
+  line-height: 40px;
   text-align: center;
-  padding: 5px 0px;
-  background-color: rgb(8, 133, 133);
-  color: #fff;
+  margin-top: 20px;
+  padding: 5 0px;
+  color: white;
   font-size: 18px;
-  line-height: 36px;
+  background-color: rgb(8, 133, 133);
   border-radius: 7px;
+  box-shadow: 0 3px 5px aqua;
 }
-.cases__wrapp {
-  text-align: left;
-  padding: 20px 20px 0px 220px;
-  width: 100%;
+.info__link::before {
+  content: "";
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  top: 0;
+  right: 0;
+  border-radius: 5px;
+  background: linear-gradient(
+    225deg,
+    #befde6 45%,
+    #aaaaaa 52%,
+    #cccccc 56%,
+    white 80%
+  );
+  transition: all 0.3s;
 }
-.cases__info {
-  float: left;
-  width: 15%;
+.info__link:hover {
+  color: #befde6;
+}
+.info__link:hover:before {
+  width: 25px;
+  height: 30px;
 }
 .project {
-  float: left;
-  width: 76%;
-  padding: 0px 100px 50px 0px;
-  text-align: left;
+  width: 74%;
 }
 .project__title {
   font-size: 25px;
-  padding: 10px 5px 10px 5px;
+  padding-bottom: 5px;
+  text-align: left;
 }
 .project__text {
+  font-family: "Calibri";
   font-size: 21px;
-  padding: 0px 5px 100px 5px;
-  text-align: left;
+  text-align: justify;
+}
+.cases__container::after {
+  content: "";
+  clear: both;
+  display: block;
 }
 /*------------------------------------Расчет стоимости------------------------------------------*/
 .calc {
-  height: 60%;
+  margin-top: 10px;
   width: 100%;
   color: #1c2534;
 }
 .calc__title {
-  padding: 50px 10px 25px 10px;
+  padding: 50px 0px 50px;
   font-size: 46px;
   text-align: center;
 }
 .calc__wrapper {
-  width: 100%;
-  padding: 10px 450px 10px 450px;
+  width: 800px;
+  margin: 0 auto;
   text-align: left;
   font-family: "Franklin Gothic";
+  padding: 10px;
 }
-.calc__title-2 {
+.calc__subtitle {
   font-size: 29px;
   font-weight: 500;
+  padding: 5px;
 }
 .calc__item {
   width: 100%;
@@ -283,28 +460,24 @@ body {
   font-size: 21px;
   color: #1c2534;
   font-weight: 600;
+  padding: 10px 5px;
 }
 /*----------------------------------Немного статистики -----------------------------------------*/
 .statistics {
   width: 100%;
-  height: 55%;
-  margin-top: 0px;
-  padding-top: 40px;
-  background: url(../img/background_3.jpg) no-repeat;
-  background-size: cover;
+  margin-top: 30px;
+  padding: 15px 0px;
+  background: url(../img/background_3.jpg) 0% 0% / cover no-repeat;
+  background-attachment: fixed;
   color: #323e4f;
   font-family: "Franklin Gothic";
   text-align: center;
 }
 
-.statistics__wrapper {
-  width: 100%;
-  padding: 0px 200px;
-}
 .statistics__item {
-  float: left;
-  padding: 40px 10px;
-  width: 25%;
+  display: inline-block;
+  margin-bottom: 40px;
+  width: 20%;
   color: #323e4f;
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -321,17 +494,14 @@ body {
 }
 .reviews {
   width: 100%;
-  height: 55%;
-  margin: 50px 0px;
   background-color: #fff;
   text-align: center;
 }
 .reviews__photo {
-  padding: 25px 0px;
   text-align: center;
 }
 .reviews__text,
-.reviews__text-2 {
+.reviews__subtext {
   padding: 20px 200px;
   font-size: 17px;
   color: #243042;
@@ -340,7 +510,7 @@ body {
 .reviews__text-bold {
   font-weight: 700;
 }
-.reviews__text-2::after {
+.reviews__subtext::after {
   content: "";
   display: block;
   padding-top: 60px;
@@ -349,18 +519,19 @@ body {
     url(../img/circle_2.png) 52% 50% no-repeat,
     url(../img/circle_2.png) 50% 50% no-repeat;
 }
+/*--------------------------Footer-----------------------*/
 .contacts {
   width: 100%;
   height: 808px;
-  background: url(../img/geo.png) 35% 27% no-repeat,
-    url(../img/mail.png) 51% 27% no-repeat,
-    url(../img/tell.png) 67% 27% no-repeat,
+  background: url(../img/geo.png) 32% 26% no-repeat,
+    url(../img/mail.png) 51% 26% no-repeat,
+    url(../img/tell.png) 69% 26% no-repeat,
     url(../img/background_4.jpg) 50% 50% no-repeat;
   font-family: "Franklin Gothic";
   text-align: center;
 }
 .contacts__title {
-  padding: 50px 0px;
+  padding: 60px 0px;
   font-size: 34px;
   font-weight: 500;
   color: #fff;
@@ -372,12 +543,10 @@ body {
   text-align: center;
   color: #fff;
 }
-
 .contacts__item {
   display: inline-block;
   padding: 90px 55px;
 }
-
 .feedback__title {
   font-size: 21px;
   font-weight: 500;
@@ -385,7 +554,7 @@ body {
   color: #fff;
 }
 .feedback {
-  margin: 50px 302px;
+  margin: 38px 302px;
 }
 .contacts__input {
   width: 47%;
@@ -404,42 +573,102 @@ body {
   font-family: "Franklin Gothic";
   width: 97%;
 }
-.feedback button {
+.btn-submit {
+  position: relative;
   background: none;
   padding: 15px 30px;
   color: white;
-  border: 1px solid #fff;
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-size: 17px;
-   }
-  .social__item a {
-    left: 35.8%;
-    bottom: 19px;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    float: left;
-    position: relative;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: -2px -2px 4px rgba(4, 233, 233, 0.7);
-    margin: 0px 15px 0px 14px;
-  } 
-  .social__item a:hover {
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.btn-submit__line {
+  position: absolute;
+  display: block;
+}
+.btn-submit__line--top {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, white);
+}
+.btn-submit:hover .btn-submit__line--top {
+  left: 100%;
+  transition: all 1s;
+  transition-delay: 0.2s;
+}
+.btn-submit__line--bottom {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, white);
+}
+.btn-submit:hover .btn-submit__line--bottom {
+  right: 100%;
+  transition: all 1s;
+  transition-delay: 0.2s;
+}
+.btn-submit__line--left {
+  left: 0;
+  bottom: -100%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(0deg, transparent, white);
+}
+.btn-submit:hover .btn-submit__line--left {
+  bottom: 100%;
+  transition: all 1s;
+  transition-delay: 0.2s;
+}
+.btn-submit__line--right {
+  right: 0;
+  top: -100%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, white);
+}
+.btn-submit:hover .btn-submit__line--right {
+  top: 100%;
+  transition: all 1s;
+  transition-delay: 0.2s;
+}
+.social__item a {
+  left: 34%;
+  float: left;
+  position: relative;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: -2px -2px 4px rgba(4, 233, 233, 0.7);
+  margin: -17px 15px 0px 15px;
+}
+.btn-submit:hover {
+  box-shadow: 0 0 10px white, 0 0 40px white, 0 0 80px white;
+  background-color: white;
+  border-radius: 5px;
+  color: rgb(42, 62, 80);
+  transition-delay: 0.8s;
+}
+.social__item a:hover {
   box-shadow: 2px 2px 5px rgba(95, 238, 12, 0.7);
-  }
-
+}
 .location {
   width: 100%;
   height: 355px;
 }
-.footer__bottom {
+.footer__text {
   background-color: rgb(42, 62, 80);
   width: 100%;
-  line-height: 85px;
+  line-height: 60px;
   font-size: 13px;
   color: #ffffff;
   font-family: "Arial";
   text-align: center;
 }
-

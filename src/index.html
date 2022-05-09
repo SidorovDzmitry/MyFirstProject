@@ -2,214 +2,286 @@
 <html lang="zxx">
 
 <head>
-	 <meta charset="UTF-8">
-	 <meta name="description" content="Это первая страница">
-	 <meta name="author" content="Имя автора">
-	 <meta name="robots" content="all">
-   <link rel="stylesheet" href="css/reset.css">
-   <link rel="stylesheet" href="css/style.css">
-	 <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Это первая страница">
+	<meta name="author" content="Имя автора">
+	<meta name="robots" content="all">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Document</title>
 </head>
 
 <body>
-  <!----------------------------------header ----------------------------------------->
-	 <header class="header">
-			<nav>
-      <a class="logo">Андрей Браун</a>
-        <ul class="menu">
-					<li class="menu__item"><a class="menu__link" href="#resume">Обо мне</a></li>
-					<li class="menu__item"><a class="menu__link" href="#skills">Услуги</a></li>
-					<li class="menu__item"><a class="menu__link" href="#cases">Кейсы</a></li>
-					<li class="menu__item"><a class="menu__link" href="#calc">Прайс</a></li>
-					<li class="menu__item"><a class="menu__link" href="#reviews">Отзывы</a></li>
-					<li class="menu__item"><a class="menu__link" href="#contacts">Контакты</a></li>
-				 </ul>
-        </nav>
-			</nav>
-	 </header>
-<!----------------------------------main----------------------------------------->
-   <main class="main">
-      <div class="main__conteiner">
-        <h1 class="main__title-1">Привет<br>Я Андрей Браун</h1>
-        <h2 class="main__title-2">Фулл стек веб-разработчик</h2>
-        <a href="#resume" class="main__link">Обо мне</a> 
-        <a href="#cases" class="main__link">Мои работы</a> 
-      </div>
-   </main>
-<!----------------------------------Обо мне ----------------------------------------->
-  <section class="resume" id="resume">
-    <h2 class="resume__title">Обо мне</h2>
-    <p class="resume__photo"><img src="img/photo.png" alt="Здесь должна быть моя фотка" ></p>
-        <p class="resume__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio provident harum quas, eius sit quia odit expedita aut repellat modi! Accusamus sint, porro voluptatum atque ducimus optio reiciendis veritatis laboriosam.</p>
-    <p class="resume__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas praesentium, perferendis fuga nulla consequuntur quisquam culpa ex et maiores eum at maxime rerum mollitia, placeat autem ipsa. Consequatur, sit, voluptates.</p>
-    <a class="resume__download" href="download/summary.rar">Скачать резюме</a>
-  </section>
-<!----------------------------------Что умею ----------------------------------------->
-  <section class="skills" id="skills">
-    <h2 class="skills__title">Что я умею</h2> 
-    <ul class="skills__list">
-      
-       <li class="skills__item">
-          <img src="img/nout.png" alt="Ой! здесь должна быть картинка">
-          <h3 class="skills__title-2">Веб-дизайн</h3>
-          <p class="skills__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique.</p>
-       </li>
+	<!-----------------preloader------------------->
+	<div class="preload__wrap">
+		<div class="preloader">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!----------------------------------header ----------------------------------------->
+	<div class="page">
+		<header class="header">
+			<div class="header__container container">
+				<nav class="header__menu menu">
+					<a class="header__logo logo" href="#home">Андрей Браун</a>
+					<ul class="menu__list">
+						<li class="menu__item"><a class="menu__link" href="#resume">Обо мне</a></li>
+						<li class="menu__item"><a class="menu__link" href="#skills">Услуги</a></li>
+						<li class="menu__item"><a class="menu__link" href="#cases">Кейсы</a></li>
+						<li class="menu__item"><a class="menu__link" href="#calc">Прайс</a></li>
+						<li class="menu__item"><a class="menu__link" href="#reviews">Отзывы</a></li>
+						<li class="menu__item"><a class="menu__link" href="#contacts">Контакты</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!----------------------------------Home---------------------------------------->
+		<main>
+			<section class="home" id="home">
+				<div class="home__conteiner container">
+					<div class="home__inner">
+						<h1 class="home__title">Привет<br>Я Андрей Браун</h1>
+						<h2 class="home__subtitle">Фулл стек веб-разработчик</h2>
+						<a href="#resume" class="home__link">Обо мне</a>
+						<a href="#cases" class="home__link">Мои работы</a>
+					</div>
+				</div>
+			</section>
+			<!----------------------------------Обо мне ----------->
+			<section class="resume" id="resume">
+				<div class="resume__container container">
+					<h2 class="resume__title">Обо мне</h2>
+					<p class="resume__photo"><img src="img/photo.png" alt="Здесь должна быть моя фотка"></p>
+					<p class="resume__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio provident harum quas,
+						eius
+						sit quia odit expedita aut repellat modi! Accusamus sint, porro voluptatum atque ducimus optio reiciendis
+						veritatis laboriosam.</p>
+					<p class="resume__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas praesentium,
+						perferendis
+						fuga
+						nulla consequuntur quisquam culpa ex et maiores eum at maxime rerum mollitia, placeat autem ipsa.
+						Consequatur,
+						sit, voluptates.</p>
+					<a class="resume__download" href="download/summary.rar"><span class="download__text">Скачать резюме</span></a>
+				</div>
+			</section>
+			<!-----------------------------Что умею --------------->
+			<section class="skills" id="skills">
+				<div class="skills__container container">
+					<h2 class="skills__title">Что я умею</h2>
+					<ul class="skills__list">
+						<li class="skills__item">
+							<img src="img/nout.png" alt="Ой! здесь должна быть картинка">
+							<h3 class="skills__title-2">Веб-дизайн</h3>
+							<p class="skills__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique.</p>
+						</li>
 
-       <li class="skills__item">
-          <img src="img/znak.png" alt="Ой! здесь должна быть картинка">
-          <h3 class="skills__title-2">Разработка</h3>
-          <p class="skills__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. excepturi.</p>
-       </li>
+						<li class="skills__item">
+							<img src="img/znak.png" alt="Ой! здесь должна быть картинка">
+							<h3 class="skills__title-2">Разработка</h3>
+							<p class="skills__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. excepturi.</p>
+						</li>
 
-       <li class= "skills__item">
-          <img src="img/raketa.png" alt="Ой! здесь должна быть картинка">
-          <h3 class="skills__title-2">Сео-оптимизация</h3>
-          <p class="skills__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, excepturi.</p>
-       </li>
+						<li class="skills__item">
+							<img src="img/raketa.png" alt="Ой! здесь должна быть картинка">
+							<h3 class="skills__title-2">Сео-оптимизация</h3>
+							<p class="skills__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, excepturi.
+							</p>
+						</li>
 
-       <li class="skills__item">
-          <img src="img/gramof.png" alt="Ой! здесь должна быть картинка">
-          <h3 class="skills__title-2">Маркетинг</h3>
-          <p class="skills__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similiq, excepturi.</p>
-       </li>
-    </ul>
- </section>
-<!----------------------------------Кейсы ----------------------------------------->
- <section class="cases" id="cases">
-  <h2 class="cases__title">Кейсы</h2>
-  <p class="cases__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere quam sint adipisci eligendi ea similique.</p>
-  <img class="cases__photo" src="img/cases.png" alt="здесь должна быть фотка с кесами">
-   <div class="cases__wrapp">
-  <div class="cases__info">
-     <h3 class="cases__title-2">CLIENT:</h3>
-     <p class="info__text">Какая-то компания</p>
-     <h3 class="cases__title-2">WEB-SiTE:</h3>
-     <p class="info__text">http://somedomain.com</p>
-     <a class="info__link" href="https://www.google.com">VISIT LIVE SITE</a> 
-  </div>
+						<li class="skills__item">
+							<img src="img/gramof.png" alt="Ой! здесь должна быть картинка">
+							<h3 class="skills__title-2">Маркетинг</h3>
+							<p class="skills__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similiq, excepturi.</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<!--------------------------------Кейсы ------------------------------------>
+			<section class="cases" id="cases">
+				<div class="cases__container container">
+					<h2 class="cases__title">Кейсы</h2>
+					<p class="cases__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere quam sint adipisci
+						eligendi
+						ea similique.</p>
+					<img class="cases__photo" src="img/cases.png" alt="здесь должна быть фотка с кесами">
 
-  <div class="project">
-     <h3 class="project__title">Назвнаие проекта</h3>
-     <p class="project__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe totam explicabo beatae nemo velit. Aperiam repellat placeat ex maiores molestiae odio, cumque inventore nesciunt, sapiente nostrum, aut optio non. Assumenda voluptates perspiciatis quia possimus corporis a sint, repellat iusto at facilis iste consequatur quas explicabo, aspernatur neque, eius aperiam minima.</p>
-  </div>
-</div>
-  </section>
-<!----------------------------------Расчет стоимости----------------------------------------->
-  <section class="calc" id="calc">
-    <h2 class="calc__title">Расчет стоимости</h2>
-  <div class="calc__wrapper">
-    <form action="#" method="post">
-       <h3 class="calc__title-2">Тип сайта</h3>
-       <select class="calc__item" name="type_site" required="required">
-          <option value="choice" selected disabled>Выберите пункт:</option>
-          <option value="value_1">Landing page</option>
-          <option value="value_2">Сайт визитка</option>
-          <option value="value_3">Корпаративный сайт</option>
-          <option value="value_4">Интернет магазин</option>
-       </select>
+					<div class="cases__inner info">
+						<h3 class="info__title">CLIENT:</h3>
+						<p class="info__text">Какая-то компания</p>
+						<h3 class="info__title">WEB-SiTE:</h3>
+						<p class="info__text">http://somedomain.com</p>
+						<a class="info__link" href="https://www.google.com">VISIT LIVE SITE</a>
+					</div>
+					<div class="cases__inner project">
+						<h3 class="project__title">Название проекта</h3>
+						<p class="project__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe totam explicabo
+							beatae
+							nemo velit. Aperiam repellat placeat ex maiores molestiae odio, cumque inventore nesciunt, sapiente
+							nostrum,
+							aut optio non. Assumenda voluptates perspiciatis quia possimus corporis a sint, repellat iusto at
+							facilis
+							iste
+							consequatur quas explicabo, aspernatur neque, eius aperiam minima.
+						</p>
+						<div>
+						</div>
+			</section>
+			<!--------------------------------Расчет стоимости-------------------------------------->
+			<section class="calc" id="calc">
+				<div class="calc__container container">
+					<h2 class="calc__title">Расчет стоимости</h2>
+					<div class="calc__wrapper">
+						<form action="#" method="post">
+							<h3 class="calc__subtitle">Тип сайта</h3>
+							<select class="calc__item" name="type_site" required="required">
+								<option value="choice" selected disabled>Выберите пункт:</option>
+								<option value="value_1">Landing page</option>
+								<option value="value_2">Сайт визитка</option>
+								<option value="value_3">Корпаративный сайт</option>
+								<option value="value_4">Интернет магазин</option>
+							</select>
 
-       <h3 class="calc__title-2">Дизайн</h3>
-       <select class="calc__item" name="type_design" required="required">
-        <option value="choice" selected disabled>Выберите пункт:</option>
-          <option value="value_1">Классический стиль</option>
-          <option value="value_2">Корпаративный стиль</option>
-          <option value="value_3">Ретро</option>
-          <option value="value_4">Рисованный стиль</option>
-       </select>
-       
-       <h3 class="calc__title-2">Адаптивность</h3> 
-       <select class="calc__item" name="type_adaptability" required="required">
-        <option value="choice" selected disabled>Выберите пункт:</option>
-          <option value="value_1">Да</option>
-          <option value="value_2">Нет</option>
-       </select>
-    </form>
+							<h3 class="calc__subtitle">Дизайн</h3>
+							<select class="calc__item" name="type_design" required="required">
+								<option value="choice" selected disabled>Выберите пункт:</option>
+								<option value="value_1">Классический стиль</option>
+								<option value="value_2">Корпаративный стиль</option>
+								<option value="value_3">Ретро</option>
+								<option value="value_4">Рисованный стиль</option>
+							</select>
 
-    <form class="result" action="#" method="post">
-       <h4 class="result__title"><pre>Сроки                                                    0</pre></h4>
-       <mark> <output name="z" for="e f"> </output> </mark>
-    </form>
+							<h3 class="calc__subtitle">Адаптивность</h3>
+							<select class="calc__item" name="type_adaptability" required="required">
+								<option value="choice" selected disabled>Выберите пункт:</option>
+								<option value="value_1">Да</option>
+								<option value="value_2">Нет</option>
+							</select>
+						</form>
 
-    <form action="#">
-       <h4 class="result__title"><pre>Стоимость                                                0</pre></h4>
-       <mark> <output name="z" for="e f"> </output> </mark>
-    </form>
-  </div>
- </section>
- <!----------------------------------Немного статистики ----------------------------------------->
- <section class="statistics" id="statistics">
-  <h2 class="statistics__tltle">Немного статистики</h2>
-  <div class="statistics__wrapper">
-   <div class="statistics__item">
-     <img src="img/smile.png" alt="Ой! здесь должна быть картинка">
-     <p class="statistics__text-bold">120</p>
-     <p class="statistics__text">Счастливых клиентоd</p>
-  </div>
+						<form class="result" action="#" method="post">
+							<h4 class="result__title">Сроки</h4>
+							<mark> <output name="z" for="e f"> </output> </mark>
+							<h4 class="result__title">Стоимость</h4>
+							<mark> <output name="z" for="e f"> </output> </mark>
+						</form>
+					</div>
+				</div>
+			</section>
+			<!--------------------------------Немного статистики ----------------------------------------->
+			<section class="statistics" id="statistics">
+				<div class="statistics__container container">
+					<h2 class="statistics__tltle">Немного статистики</h2>
 
-  <div class="statistics__item">
-     <img src="img/tag.png" alt="Ой! здесь должна быть картинка">
-     <p class="statistics__text-bold">4600</p>
-     <p class="statistics__text">Часов работы</p>
-  </div>
+					<div class="statistics__item">
+						<img src="img/smile.png" alt="Ой! здесь должна быть картинка">
+						<p class="statistics__text-bold">120</p>
+						<p class="statistics__text">Счастливых клиентов</p>
+					</div>
 
-  <div class="statistics__item">
-     <img src="img/choice.png" alt="Ой! здесь должна быть картинка">
-     <p class="statistics__text-bold">340</p>
-     <p class="statistics__text">Проектов завршено</p>
-    </div>
-  </div>
+					<div class="statistics__item">
+						<img src="img/tag.png" alt="Ой! здесь должна быть картинка">
+						<p class="statistics__text-bold">4600</p>
+						<p class="statistics__text">Часов работы</p>
+					</div>
 
-  <div class="statistics__item">
-     <img src="img/cup.png" alt="Ой! здесь должна быть картинка">
-     <p class="statistics__text-bold">23</p>
-     <p class="statistics__text">Наград получено</p>
-  </div>
-</section>
-<!----------------------------------Отзывы ----------------------------------------->
-<section class="reviews" id="reviews">
-  <h2 class="reviews__title">Отзывы</h2>
-  <p class="reviews__photo"></p><img src="img/photo_2.png" alt="ОЙ! здесь должно быть фото"></p>
-  <p class="reviews__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio provident harum quas, eius sit quia odit expedita aut repellat modi! Accusamus sint, porro voluptatum atque ducimus optio reiciendis veritatis laboriosam.</p>
-  <p class="reviews__text-2"><span class="reviews__text-bold">Михаил</span>, Генеральный директр ПАО "Газпром"</p>
- </section>
+					<div class="statistics__item">
+						<img src="img/choice.png" alt="Ой! здесь должна быть картинка">
+						<p class="statistics__text-bold">340</p>
+						<p class="statistics__text">Проектов завршено</p>
+					</div>
 
- <footer class="footer">
-  <section class="contacts" id="contacts">
-     <h2 class="contacts__title">Мои контакты</h2>
-     <p class="contacts__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita velit veritatis, quidem, repellat.</p>
-     <ul class="contacts__list">
-        <li class="contacts__item"> <a class="contacts__link" class="contacts__link-adress" href="#">Cанкт-Петербург<br>Невский проспект 11</a></li>
-        <li class="contacts__item"> <a class="contacts__link" 
-        class="contacts__link-mail" 
-        href="mailto:info@companyname.com">info@companyname.com</a></li>
-        <li class="contacts__item"> <a class="contacts__link" class="contacts__link-tel" href="tel:+7999999999">+7999-999-999</a></li>
-     </ul>
-   <h3 class="feedback__title">Оставьте мне сообщение</h3>
+					<div class="statistics__item">
+						<img src="img/cup.png" alt="Ой! здесь должна быть картинка">
+						<p class="statistics__text-bold">23</p>
+						<p class="statistics__text">Наград получено</p>
+					</div>
+				</div>
+			</section>
+			<!--------------------------------Отзывы ----------------------------------------->
+			<section class="reviews" id="reviews">
+				<h2 class="reviews__title">Отзывы</h2>
+				<p class="reviews__photo"></p><img src="img/photo_2.png" alt="ОЙ! здесь должно быть фото"></p>
+				<p class="reviews__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio provident harum quas,
+					eius
+					sit quia odit expedita aut repellat modi! Accusamus sint, porro voluptatum atque ducimus optio reiciendis
+					veritatis laboriosam.</p>
+				<p class="reviews__subtext"><span class="reviews__text-bold">Михаил</span>, Генеральный директр ПАО "Газпром"
+				</p>
+			</section>
+		</main>
+		<!----------------------footer--------------------------------->
+		<footer class="footer">
+			<section class="contacts" id="contacts">
+				<h2 class="contacts__title">Мои контакты</h2>
+				<p class="contacts__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita velit
+					veritatis,
+					quidem, repellat.</p>
+				<ul class="contacts__list">
+					<li class="contacts__item"> <a class="contacts__link contacts__link-adress"
+							href="#">Cанкт-Петербург<br>Невский
+							проспект 11</a></li>
+					<li class="contacts__item"> <a class="contacts__link  contacts__link-mail"
+							href="mailto:info@companyname.com">info@companyname.com</a></li>
+					<li class="contacts__item"> <a class="contacts__link" class="contacts__link-tel"
+							href="tel:+7999999999">+7999-999-999</a></li>
+				</ul>
+				<h3 class="feedback__title">Оставьте мне сообщение</h3>
 
-   <div class="feedback">
-     <form action="#">
-        <input class="contacts__input" type="text" placeholder="Введите ваше имя">
-        <input class="contacts__input" type="email" placeholder="E-mail">
+				<div class="feedback">
+					<form action="#">
+						<input class="contacts__input" type="text" placeholder="Введите ваше имя">
+						<input class="contacts__input" type="email" placeholder="E-mail">
 
-        <textarea class="contacts__area" name="feedback" cols="45" rows="10" placeholder="Сообщение"></textarea><br>
-        <button><span class="button__content">Отправить</span></button>
-     </form>
-    </div>
-     <ul class="social">
-        <li class="social__item"> <a class="social__link-fb" href="#" target="_blank" aria-label="Link to facebook"></a></li>
-        <li class="social__item"> <a class="social__link-tw" href="#" target="_blank" aria-label="Link to twitter"></a></li>
-        <li class="social__item"> <a class="social__link-dr" href="#" target="_blank" aria-label="Link to dribble"></a></li>
-        <li class="social__item"> <a class="social__link-inst" href="#" target="_blank" aria-label="Link to instaram"></a></li>
-        <li class="social__item"> <a class="social__link-asd" href="#" target="_blank" aria-label="Link to linkedin"></a></li>
-        <li class="social__item"> <a class="social__link-ln" href="#" target="_blank" aria-label="Link to linkedin"></a></li>
-     </ul>
-  </section>
-  <div class="location">
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93409.48475234307!2d-71.75561761223696!3d42.977296244777975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e233e8b7590fb7%3A0x386a28dfe2710e41!2z0J3RjNGOINCR0L7RgdGC0L7QvSwg0J3RjNGOLdCl0Y3QvNC_0YjQuNGAIDAzMDcwLCDQodCo0JA!5e0!3m2!1sru!2sby!4v1650668692079!5m2!1sru!2sby" width="100%" height="355" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-  <div class="footer__bottom">
-     Сopyright &copy;&nbsp;2021 Андрей Браун. Dasign by Web
-  </div>
-</footer>
+						<textarea class="contacts__area" name="feedback" cols="45" rows="10" placeholder="Сообщение"></textarea><br>
+						<button class="btn-submit" type="submit">
+							<span class="btn-submit__line btn-submit__line--top"></span>
+							<span class="btn-submit__line btn-submit__line--bottom"></span>
+							<span class="btn-submit__line btn-submit__line--right"></span>
+							<span class="btn-submit__line btn-submit__line--left"></span>
+							Отправить
+						</button>
+					</form>
+				</div>
+				<ul class="social">
+					<li class="social__item"> <a class="social__link-fb" href="#" target="_blank"
+							aria-label="Link to facebook"></a>
+					</li>
+					<li class="social__item"> <a class="social__link-tw" href="#" target="_blank"
+							aria-label="Link to twitter"></a>
+					</li>
+					<li class="social__item"> <a class="social__link-dr" href="#" target="_blank"
+							aria-label="Link to dribble"></a>
+					</li>
+					<li class="social__item"> <a class="social__link-inst" href="#" target="_blank"
+							aria-label="Link to instaram"></a></li>
+					<li class="social__item"> <a class="social__link-asd" href="#" target="_blank"
+							aria-label="Link to linkedin"></a></li>
+					<li class="social__item"> <a class="social__link-ln" href="#" target="_blank"
+							aria-label="Link to linkedin"></a>
+					</li>
+				</ul>
+			</section>
+			<div class="location">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93409.48475234307!2d-71.75561761223696!3d42.977296244777975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e233e8b7590fb7%3A0x386a28dfe2710e41!2z0J3RjNGOINCR0L7RgdGC0L7QvSwg0J3RjNGOLdCl0Y3QvNC_0YjQuNGAIDAzMDcwLCDQodCo0JA!5e0!3m2!1sru!2sby!4v1650668692079!5m2!1sru!2sby"
+					width="100%" height="355" style="border:0;" allowfullscreen="" loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+			<div class="footer__text">
+				Сopyright &copy;&nbsp;2021 Андрей Браун. Dasign by Web
+			</div>
+		</footer>
+	</div>
 </body>
+
 </html>
